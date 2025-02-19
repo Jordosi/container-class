@@ -57,13 +57,21 @@ public class IntegerContainer {
      * @param index index of the element to be removed
      */
     public void remove(int index){
-        //checkIndex(index);
+        checkIndex(index);
         System.arraycopy(elements, index + 1, elements, index, size - index - 1);
         size--;
     }
 
+    /**
+     * Gives an opportunity to remove several elements starting from some index
+     * @param index index - the start of range to be removed
+     * @param count amount of elements to be removed
+     */
     public void removeRange(int index, int count){
-        //TODO: remove range of elements
+        if (index < 0 || count < 0 || index + count > size){
+            throw new IndexOutOfBoundsException("Incorrect index or amount of elements");
+        }
+        System.arraycopy(elements, index+count, elements, index, size-index-count);
     }
 
     /**
@@ -85,10 +93,41 @@ public class IntegerContainer {
     /**
      * Enlarges the capacity of the container if it is needed
      */
-    public void adjustCapacity(){
+    private void adjustCapacity(){
         if (size == elements.length){
             int[] newElements = new int[elements.length * 2];
             System.arraycopy(elements, 0, newElements, 0, size);
         }
+    }
+    /**
+     * Check if index is in bounds
+     * @param index index to be checked
+     */
+    private void checkIndex(int index){
+        if (index < 0 || index >= size){
+            throw new IndexOutOfBoundsException("Index out of range");
+        }
+    }
+
+    /**
+     * Getting string view of the container
+     * @return string view of the container in template [element_0, element_1, ...]
+     */
+    @Override
+    public String toString(){
+        if (size == 0){
+            return "[]";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append('[');
+        for (int i = 0; i < size; ++i){
+            sb.append(elements[i]);
+            if (i < size - 1){
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+
+        return sb.toString();
     }
 }
