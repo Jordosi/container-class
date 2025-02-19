@@ -91,4 +91,62 @@ class IntegerContainerTest {
         assertTrue(container.isEmpty());
         assertEquals(0, container.size());
     }
+
+    /**
+     * Testing the exception throw while trying to get element at index
+     */
+    @Test
+    void testElementAtThrowsIndexOutOfBoundsException() {
+        assertThrows(IndexOutOfBoundsException.class, () -> container.elementAt(0));
+        container.add(10);
+        assertThrows(IndexOutOfBoundsException.class, () -> container.elementAt(1));
+    }
+
+    /**
+     * Test the exception throw when removing element
+     */
+    @Test
+    void testRemoveThrowsIndexOutOfBoundsException() {
+        assertThrows(IndexOutOfBoundsException.class, () -> container.remove(0));
+        container.add(10);
+        assertThrows(IndexOutOfBoundsException.class, () -> container.remove(1));
+    }
+
+    /**
+     * Test the exception throw when removing range of elements
+     */
+    @Test
+    void testRemoveRangeThrowsIndexOutOfBoundsException() {
+        assertThrows(IndexOutOfBoundsException.class, () -> container.removeRange(0, 1));
+        container.add(10);
+        assertThrows(IndexOutOfBoundsException.class, () -> container.removeRange(1, 1));
+        assertThrows(IndexOutOfBoundsException.class, () -> container.removeRange(0, 2));
+    }
+
+    /**
+     * Test adjusting capacity
+     */
+    @Test
+    void testAdjustCapacity() {
+        for (int i = 0; i < 15; i++) {
+            container.add(i);
+        }
+        assertEquals(15, container.size());
+        assertEquals(14, container.elementAt(14));
+    }
+
+    /**
+     * Testing string view
+     */
+    @Test
+    void testToString() {
+        assertEquals("[]", container.toString()); // empty container
+
+        container.add(10);
+        assertEquals("[10]", container.toString()); // 1 element
+
+        container.add(20);
+        container.add(30);
+        assertEquals("[10, 20, 30]", container.toString()); // several elements
+    }
 }

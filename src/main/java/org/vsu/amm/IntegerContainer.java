@@ -101,6 +101,7 @@ public class IntegerContainer {
         if (size == elements.length) {
             int[] newElements = new int[elements.length * 2];
             System.arraycopy(elements, 0, newElements, 0, size);
+            elements = newElements;
         }
     }
     /**
