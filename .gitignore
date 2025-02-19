@@ -1,0 +1,28 @@
+### Ignore compiled files (bytecode)
+*.class
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+
+### Ignore build directories ###
+/target/
+/build/
+/out/
+
+### Ignore logs and temporary files ###
+*.log
+*.temp
+
+### Ignore dependency files ###
+*.jar
+*.war
+*.ear
+
+### Ignore settings files ###
+*.properties
+*.xml
