@@ -8,6 +8,7 @@
 *.iws
 *.iml
 *.ipr
+/.idea/
 
 ### Ignore build directories ###
 /target/
