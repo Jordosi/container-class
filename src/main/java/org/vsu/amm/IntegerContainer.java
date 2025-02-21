@@ -75,6 +75,9 @@ public class IntegerContainer {
         size -= count;
     }
 
+    /**
+     * Clears the container
+     */
     public void clear() {
         size = 0;
     }
@@ -120,9 +123,6 @@ public class IntegerContainer {
      */
     @Override
     public String toString() {
-        if (size == 0){
-            return "[]";
-        }
         StringBuilder sb = new StringBuilder();
         sb.append('[');
         for (int i = 0; i < size; ++i) {
@@ -131,8 +131,7 @@ public class IntegerContainer {
                 sb.append(", ");
             }
         }
-        sb.append("]");
-
+        sb.append(']');
         return sb.toString();
     }
 }
